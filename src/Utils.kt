@@ -1,13 +1,9 @@
-import java.io.File
+import java.nio.file.Files
+import java.nio.file.Paths
 import java.math.BigInteger
 import java.security.MessageDigest
 
 /**
  * Reads lines from the given input txt file.
  */
-fun readInput(name: String) = File("src", "$name.txt").readLines()
-
-/**
- * Converts string to md5 hash.
- */
-fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray())).toString(16)
+fun readInput(name: String) = Files.readAllLines(Paths.get("src", "$name.txt"))
