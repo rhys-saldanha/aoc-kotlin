@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 
 internal class Day04Test {
     @Test
-    fun `should get lines for a 3x3 board`() {
+    internal fun `should get lines for a 3x3 board`() {
         val board = BingoBoard(
             listOf(
                 listOf(1, 2, 3),
@@ -37,7 +37,7 @@ internal class Day04Test {
     }
 
     @Test
-    fun `should win board of 1 number`() {
+    internal fun `should win board of 1 number`() {
         val board = BingoBoard(listOf(listOf(5)))
         assertFalse(board.hasWon())
 
@@ -47,7 +47,7 @@ internal class Day04Test {
     }
 
     @Test
-    fun `should win 3x3 board`() {
+    internal fun `should win 3x3 board`() {
         val board = BingoBoard(
             listOf(
                 listOf(1, 2, 3),

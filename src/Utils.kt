@@ -7,7 +7,7 @@ import java.nio.file.Paths
 fun readInput(name: String): List<String> {
     val inputFile = Paths.get("src", "$name.txt")
     return if (Files.exists(inputFile))
-        Files.readAllLines(inputFile)
+        Files.readAllLines(inputFile).map { it.trim() }
     else
         listOf()
 }
