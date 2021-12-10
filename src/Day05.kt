@@ -85,6 +85,11 @@ fun main() {
 }
 
 data class Coordinate(val x: Int, val y: Int) {
+    fun plusX() = Coordinate(x + 1, y)
+    fun minusX() = Coordinate(x - 1, y)
+    fun plusY() = Coordinate(x, y + 1)
+    fun minusY() = Coordinate(x, y - 1)
+
     override fun toString(): String {
         return "($x,$y)"
     }
