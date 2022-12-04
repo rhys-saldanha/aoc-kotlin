@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.6.0"
+    kotlin("jvm") version "1.7.20"
 }
 
 repositories {
@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     testImplementation("org.hamcrest:hamcrest:2.2")
 }
