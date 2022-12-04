@@ -1,3 +1,6 @@
+package y2021
+
+import readInput
 import kotlin.math.pow
 import kotlin.math.roundToInt
 
@@ -16,8 +19,8 @@ fun main() {
         return oxygen.getDecimal() * co2.getDecimal()
     }
 
-    val testInput = readInput("Day03_test")
-    val input = readInput("Day03")
+    val testInput = readInput("y2021/Day03_test")
+    val input = readInput("y2021/Day03")
 
     println(part1(testInput))
     check(part1(testInput) == 198)
