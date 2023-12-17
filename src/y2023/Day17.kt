@@ -50,13 +50,9 @@ fun main() {
         throw Exception("No path found")
     }
 
-    fun part1(input: List<String>): Int {
-        return findPath(input, 0, 3)
-    }
+    fun part1(input: List<String>): Int = findPath(input, 0, 3)
 
-    fun part2(input: List<String>): Int {
-        return findPath(input, 4, 10)
-    }
+    fun part2(input: List<String>): Int = findPath(input, 4, 10)
 
     val testInput = readInput("y2023/Day17_test")
     println(part1(testInput))
@@ -69,14 +65,12 @@ fun main() {
     println(part2(input))
 }
 
-fun next(previous: Direction?): Array<Direction> {
-    return when (previous) {
-        UP -> arrayOf(UP, RIGHT, LEFT)
-        RIGHT -> arrayOf(UP, RIGHT, DOWN)
-        DOWN -> arrayOf(DOWN, RIGHT, LEFT)
-        LEFT -> arrayOf(UP, DOWN, LEFT)
-        null -> Direction.values()
-    }
+fun next(previous: Direction?): Array<Direction> = when (previous) {
+    UP -> arrayOf(UP, RIGHT, LEFT)
+    RIGHT -> arrayOf(UP, RIGHT, DOWN)
+    DOWN -> arrayOf(DOWN, RIGHT, LEFT)
+    LEFT -> arrayOf(UP, DOWN, LEFT)
+    null -> Direction.values()
 }
 
 
