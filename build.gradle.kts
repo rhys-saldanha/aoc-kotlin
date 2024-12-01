@@ -1,6 +1,7 @@
 plugins {
-    kotlin("jvm") version "1.7.20"
-    id("com.github.ben-manes.versions") version "0.17.0"
+    kotlin("jvm") version "2.1.0"
+    id("se.patrikerdes.use-latest-versions") version "0.2.18"
+    id("com.github.ben-manes.versions") version "0.51.0"
 }
 
 repositories {
@@ -8,9 +9,9 @@ repositories {
 }
 
 dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.11.3")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-    testImplementation("org.hamcrest:hamcrest:2.2")
+    testImplementation("org.hamcrest:hamcrest:3.0")
 }
 
 tasks {
@@ -25,9 +26,5 @@ tasks {
 
     test {
         useJUnitPlatform()
-    }
-
-    wrapper {
-        gradleVersion = "7.3"
     }
 }
