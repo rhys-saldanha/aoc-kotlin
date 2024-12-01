@@ -1,12 +1,13 @@
 package y2023
 
+import common.Direction
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.contains
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.EnumSource
-import y2023.LightDirection.*
+import common.Direction.*
 
 class Day16Test {
 
@@ -144,10 +145,10 @@ class Day16Test {
         private val empty = EmptyCell('.')
 
         @ParameterizedTest
-        @EnumSource(LightDirection::class)
-        fun `should pass light in the same direction`(lightDirection: LightDirection) {
-            val lightDirections = empty.passLight(lightDirection)
-            assertThat(lightDirections, contains(lightDirection))
+        @EnumSource(Direction::class)
+        fun `should pass light in the same direction`(direction: Direction) {
+            val lightDirections = empty.passLight(direction)
+            assertThat(lightDirections, contains(direction))
         }
     }
 }
