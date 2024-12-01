@@ -14,6 +14,18 @@ fun readInput(name: String): List<String> {
         listOf()
 }
 
+fun List<String>.split(): List<List<String>> =
+    this.map { line -> line.trim().split("\\s+".toRegex()) }
+
+fun <T, U> List<List<T>>.mapInner(fn: (T) -> U): List<List<U>> = this.map { it.map(fn) }
+
+fun <T> List<T>.toPair(): Pair<T, T> {
+    if (this.size != 2) {
+        throw IllegalArgumentException("Expected list of length 2, got list of length $this.size")
+    }
+    return Pair(this[0], this[1])
+}
+
 /**
  * Combine the given lists into a list of lists.
  */

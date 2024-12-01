@@ -1,6 +1,7 @@
 package y2022
 
 import readInput
+import toPair
 
 fun main() {
 
@@ -48,10 +49,3 @@ fun <T> List<T>.splitInHalf(): List<List<T>> = this.withIndex()
     .map { it.removeIndex() }
 
 fun <T> List<IndexedValue<T>>.removeIndex(): List<T> = this.map { it.value }
-
-fun <T> List<T>.toPair(): Pair<T, T> {
-    if (this.size != 2) {
-        throw IllegalArgumentException("Expected list of length 2, got list of length $this.size")
-    }
-    return Pair(this[0], this[1])
-}
