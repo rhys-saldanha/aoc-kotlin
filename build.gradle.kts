@@ -12,6 +12,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.11.3")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     testImplementation("org.hamcrest:hamcrest:3.0")
+    testImplementation("org.assertj:assertj-core:3.26.3")
 }
 
 tasks {
