@@ -1,4 +1,8 @@
 .gradle
 .idea
+
 build
+out
+
 src/**/*.txt
+!src/**/*_test.txt
