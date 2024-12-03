@@ -3,15 +3,17 @@ package y2024
 import readInput
 
 fun main() {
+    val multiplyRegex = """mul\(([0-9]{1,3}),([0-9]{1,3})\)""".toRegex()
+    val doRegex = """do\(\)""".toRegex()
+    val dontRegex = """don't\(\)""".toRegex()
+
     fun part1(input: List<String>): Int {
-        val multiplyRegex = Regex("""mul\(([0-9]{1,3}),([0-9]{1,3})\)""")
         return input.flatMap { multiplyRegex.findAll(it) }
             .sumOf { it.groupValues[1].toInt() * it.groupValues[2].toInt() }
     }
 
     fun part2(input: List<String>): Int {
-        val multiplyRegex = Regex("""mul\(([0-9]{1,3}),([0-9]{1,3})\)|do\(\)|don't\(\)""")
-        return input.flatMap { multiplyRegex.findAll(it) }
+        return input.flatMap { """$multiplyRegex|$doRegex|$dontRegex""".toRegex().findAll(it) }
             .fold(Pair(true, 0)) { (enabled: Boolean, sum: Int), matchResult ->
                 when (matchResult.groupValues[0]) {
                     "do()" -> Pair(true, sum)
