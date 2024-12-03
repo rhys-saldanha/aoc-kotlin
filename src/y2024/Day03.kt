@@ -15,17 +15,12 @@ fun main() {
     fun part2(input: List<String>): Int {
         return input.flatMap { """$multiplyRegex|$doRegex|$dontRegex""".toRegex().findAll(it) }
             .fold(Pair(true, 0)) { (enabled: Boolean, sum: Int), matchResult ->
-                when (matchResult.groupValues[0]) {
-                    "do()" -> Pair(true, sum)
-                    "don't()" -> Pair(false, sum)
-                    else -> if (enabled) {
-                        Pair(
-                            true,
-                            sum + matchResult.groupValues[1].toInt() * matchResult.groupValues[2].toInt()
-                        )
-                    } else {
-                        Pair(false, sum)
-                    }
+                val instruction = matchResult.groupValues[0]
+                when {
+                    instruction == "do()" -> Pair(true, sum)
+                    instruction == "don't()" -> Pair(false, sum)
+                    enabled -> Pair(true, sum + matchResult.groupValues[1].toInt() * matchResult.groupValues[2].toInt())
+                    else -> Pair(false, sum)
                 }
             }.second
     }
