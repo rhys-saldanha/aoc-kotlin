@@ -18,9 +18,8 @@ fun main() {
                 val instruction = matchResult.groupValues[0]
                 when {
                     instruction == "do()" -> Pair(true, sum)
-                    instruction == "don't()" -> Pair(false, sum)
-                    enabled -> Pair(true, sum + matchResult.groupValues[1].toInt() * matchResult.groupValues[2].toInt())
-                    else -> Pair(false, sum)
+                    instruction == "don't()" || !enabled -> Pair(false, sum)
+                    else -> Pair(true, sum + matchResult.groupValues[1].toInt() * matchResult.groupValues[2].toInt())
                 }
             }.second
     }
