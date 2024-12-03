@@ -18,13 +18,13 @@ fun main() {
                 when (matchResult.groupValues[0]) {
                     "do()" -> Pair(true, sum)
                     "don't()" -> Pair(false, sum)
-                    else -> when (enabled) {
-                        true -> Pair(
+                    else -> if (enabled) {
+                        Pair(
                             true,
                             sum + matchResult.groupValues[1].toInt() * matchResult.groupValues[2].toInt()
                         )
-
-                        false -> Pair(false, sum)
+                    } else {
+                        Pair(false, sum)
                     }
                 }
             }.second
