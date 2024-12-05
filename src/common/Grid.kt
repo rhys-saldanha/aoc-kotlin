@@ -1,38 +1,35 @@
 package common
 
-import y2023.Instruction
-
 typealias Grid<T> = List<List<T>>
 typealias MutableGrid<T> = MutableList<MutableList<T>>
 
 enum class Direction {
-    UP, DOWN, LEFT, RIGHT
+    U, UR, R, DR, D, DL, L, UL
 }
 
-data class Point(val first: Int, val second: Int) {
+/**
+ * Origin is top left, x across y down
+ */
+data class Point(val x: Int, val y: Int) {
 
     infix fun shift(direction: Direction): Point {
         return when (direction) {
-            Direction.UP -> Point(first - 1, second)
-            Direction.DOWN -> Point(first + 1, second)
-            Direction.LEFT -> Point(first, second - 1)
-            Direction.RIGHT -> Point(first, second + 1)
+            Direction.U -> Point(x - 1, y)
+            Direction.UR -> Point(x - 1, y + 1)
+            Direction.R -> Point(x, y + 1)
+            Direction.DR -> Point(x + 1, y + 1)
+            Direction.D -> Point(x + 1, y)
+            Direction.DL -> Point(x + 1, y - 1)
+            Direction.L -> Point(x, y - 1)
+            Direction.UL -> Point(x - 1, y - 1)
         }
     }
 
-    infix fun pointing(direction: Direction): Instruction {
-        return Instruction(this, direction)
-    }
-
-    override fun toString(): String = "($first, $second)"
-}
-
-fun <T> Grid<Set<T>>.toMutableGrid(): MutableGrid<MutableSet<T>> {
-    return this.map { row -> row.map { it.toMutableSet() }.toMutableList() }.toMutableList()
+    override fun toString(): String = "($x, $y)"
 }
 
 fun <T> Grid<T>.get(point: Point): T {
-    return this[point.first][point.second]
+    return this[point.x][point.y]
 }
 
 fun <T> Grid<T>.has(point: Point): Boolean {
@@ -40,14 +37,21 @@ fun <T> Grid<T>.has(point: Point): Boolean {
 }
 
 fun <T> Grid<T>.getOrNull(point: Point): T? {
-    return this.getOrNull(point.first)?.getOrNull(point.second)
+    return this.getOrNull(point.x)?.getOrNull(point.y)
 }
 
 fun <T, U> Grid<T>.mapValues(transform: (T) -> U): Grid<U> {
     return this.map { row -> row.map { transform(it) } }
 }
 
+fun <T> Grid<T>.values(): Sequence<Pair<Point, T>> = sequence {
+    for (x in this@values.indices) {
+        for (y in this@values[x].indices) {
+            yield(Point(x, y) to this@values[x][y])
+        }
+    }
+}
 
 fun <T> MutableGrid<T>.set(point: Point, value: T) {
-    this[point.first][point.second] = value
+    this[point.x][point.y] = value
 }

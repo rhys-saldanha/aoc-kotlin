@@ -66,11 +66,12 @@ fun main() {
 }
 
 fun next(previous: Direction?): Array<Direction> = when (previous) {
-    UP -> arrayOf(UP, RIGHT, LEFT)
-    RIGHT -> arrayOf(UP, RIGHT, DOWN)
-    DOWN -> arrayOf(DOWN, RIGHT, LEFT)
-    LEFT -> arrayOf(UP, DOWN, LEFT)
-    null -> Direction.values()
+    U -> arrayOf(U, R, L)
+    R -> arrayOf(U, R, D)
+    D -> arrayOf(D, R, L)
+    L -> arrayOf(U, D, L)
+    null -> entries.toTypedArray()
+    else -> throw IllegalStateException("Cannot path diagonally")
 }
 
 

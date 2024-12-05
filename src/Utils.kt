@@ -15,8 +15,8 @@ fun readInput(name: String): List<String> {
     return inputFile.readLines()
 }
 
-fun List<String>.split(): List<List<String>> =
-    this.map { line -> line.trim().split("\\s+".toRegex()) }
+fun List<String>.split(regex: Regex = "\\s+".toRegex()): List<List<String>> =
+    this.map { line -> line.trim().split(regex) }
 
 fun <T, U> List<List<T>>.mapInner(fn: (T) -> U): List<List<U>> = this.map { it.map(fn) }
 

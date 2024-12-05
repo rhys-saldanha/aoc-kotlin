@@ -21,26 +21,26 @@ class Day16Test {
 
             @Test
             fun `should pass light going up to right`() {
-                val lightDirections = mirror.passLight(UP)
-                assertThat(lightDirections, contains(RIGHT))
+                val lightDirections = mirror.passLight(U)
+                assertThat(lightDirections, contains(R))
             }
 
             @Test
             fun `should pass light going right to up`() {
-                val lightDirections = mirror.passLight(RIGHT)
-                assertThat(lightDirections, contains(UP))
+                val lightDirections = mirror.passLight(R)
+                assertThat(lightDirections, contains(U))
             }
 
             @Test
             fun `should pass light going down to left`() {
-                val lightDirections = mirror.passLight(DOWN)
-                assertThat(lightDirections, contains(LEFT))
+                val lightDirections = mirror.passLight(D)
+                assertThat(lightDirections, contains(L))
             }
 
             @Test
             fun `should pass light going left to down`() {
-                val lightDirections = mirror.passLight(LEFT)
-                assertThat(lightDirections, contains(DOWN))
+                val lightDirections = mirror.passLight(L)
+                assertThat(lightDirections, contains(D))
             }
         }
 
@@ -51,26 +51,26 @@ class Day16Test {
 
             @Test
             fun `should pass light going up to left`() {
-                val lightDirections = mirror.passLight(UP)
-                assertThat(lightDirections, contains(LEFT))
+                val lightDirections = mirror.passLight(U)
+                assertThat(lightDirections, contains(L))
             }
 
             @Test
             fun `should pass light going right to down`() {
-                val lightDirections = mirror.passLight(RIGHT)
-                assertThat(lightDirections, contains(DOWN))
+                val lightDirections = mirror.passLight(R)
+                assertThat(lightDirections, contains(D))
             }
 
             @Test
             fun `should pass light going down to right`() {
-                val lightDirections = mirror.passLight(DOWN)
-                assertThat(lightDirections, contains(RIGHT))
+                val lightDirections = mirror.passLight(D)
+                assertThat(lightDirections, contains(R))
             }
 
             @Test
             fun `should pass light going left to up`() {
-                val lightDirections = mirror.passLight(LEFT)
-                assertThat(lightDirections, contains(UP))
+                val lightDirections = mirror.passLight(L)
+                assertThat(lightDirections, contains(U))
             }
         }
     }
@@ -85,26 +85,26 @@ class Day16Test {
 
             @Test
             fun `should pass light going up to left and right`() {
-                val lightDirections = splitter.passLight(UP)
-                assertThat(lightDirections, contains(LEFT, RIGHT))
+                val lightDirections = splitter.passLight(U)
+                assertThat(lightDirections, contains(L, R))
             }
 
             @Test
             fun `should pass light going down to left and right`() {
-                val lightDirections = splitter.passLight(DOWN)
-                assertThat(lightDirections, contains(LEFT, RIGHT))
+                val lightDirections = splitter.passLight(D)
+                assertThat(lightDirections, contains(L, R))
             }
 
             @Test
             fun `should pass light going left to left`() {
-                val lightDirections = splitter.passLight(LEFT)
-                assertThat(lightDirections, contains(LEFT))
+                val lightDirections = splitter.passLight(L)
+                assertThat(lightDirections, contains(L))
             }
 
             @Test
             fun `should pass light going right to right`() {
-                val lightDirections = splitter.passLight(RIGHT)
-                assertThat(lightDirections, contains(RIGHT))
+                val lightDirections = splitter.passLight(R)
+                assertThat(lightDirections, contains(R))
             }
         }
 
@@ -115,26 +115,26 @@ class Day16Test {
 
             @Test
             fun `should pass light going up to up`() {
-                val lightDirections = splitter.passLight(UP)
-                assertThat(lightDirections, contains(UP))
+                val lightDirections = splitter.passLight(U)
+                assertThat(lightDirections, contains(U))
             }
 
             @Test
             fun `should pass light going down to down`() {
-                val lightDirections = splitter.passLight(DOWN)
-                assertThat(lightDirections, contains(DOWN))
+                val lightDirections = splitter.passLight(D)
+                assertThat(lightDirections, contains(D))
             }
 
             @Test
             fun `should pass light going left to up and down`() {
-                val lightDirections = splitter.passLight(LEFT)
-                assertThat(lightDirections, contains(UP, DOWN))
+                val lightDirections = splitter.passLight(L)
+                assertThat(lightDirections, contains(U, D))
             }
 
             @Test
             fun `should pass light going right to up and down`() {
-                val lightDirections = splitter.passLight(RIGHT)
-                assertThat(lightDirections, contains(UP, DOWN))
+                val lightDirections = splitter.passLight(R)
+                assertThat(lightDirections, contains(U, D))
             }
         }
     }

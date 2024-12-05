@@ -3,6 +3,7 @@ package y2023
 import common.*
 import common.Direction.*
 import readInput
+import java.lang.IllegalStateException
 
 fun main() {
 
@@ -21,7 +22,7 @@ fun main() {
     }
 
     fun part1(input: List<String>): Int {
-        return computeEnergy(input.toCellGrid(), Point(0, 0) pointing RIGHT)
+        return computeEnergy(input.toCellGrid(), Point(0, 0) pointing R)
     }
 
     fun part2(input: List<String>): Int {
@@ -57,17 +58,19 @@ class MirrorCell(private val type: Char) : Cell {
     override fun passLight(lightDirection: Direction): Set<Direction> {
         return when (type) {
             '/' -> when (lightDirection) {
-                UP -> setOf(RIGHT)
-                RIGHT -> setOf(UP)
-                DOWN -> setOf(LEFT)
-                LEFT -> setOf(DOWN)
+                U -> setOf(R)
+                R -> setOf(U)
+                D -> setOf(L)
+                L -> setOf(D)
+                else -> throw IllegalStateException("Cannot bounce light diagonally")
             }
 
             '\\' -> when (lightDirection) {
-                UP -> setOf(LEFT)
-                RIGHT -> setOf(DOWN)
-                DOWN -> setOf(RIGHT)
-                LEFT -> setOf(UP)
+                U -> setOf(L)
+                R -> setOf(D)
+                D -> setOf(R)
+                L -> setOf(U)
+                else -> throw IllegalStateException("Cannot bounce light diagonally")
             }
 
             else -> throw Exception("Unknown mirror type")
@@ -81,17 +84,19 @@ class SplitterCell(private val type: Char) : Cell {
     override fun passLight(lightDirection: Direction): Set<Direction> {
         return when (type) {
             '|' -> when (lightDirection) {
-                UP -> setOf(UP)
-                DOWN -> setOf(DOWN)
-                RIGHT -> setOf(UP, DOWN)
-                LEFT -> setOf(UP, DOWN)
+                U -> setOf(U)
+                D -> setOf(D)
+                R -> setOf(U, D)
+                L -> setOf(U, D)
+                else -> throw IllegalStateException("Cannot bounce light diagonally")
             }
 
             '-' -> when (lightDirection) {
-                UP -> setOf(LEFT, RIGHT)
-                DOWN -> setOf(LEFT, RIGHT)
-                RIGHT -> setOf(RIGHT)
-                LEFT -> setOf(LEFT)
+                U -> setOf(L, R)
+                D -> setOf(L, R)
+                R -> setOf(R)
+                L -> setOf(L)
+                else -> throw IllegalStateException("Cannot bounce light diagonally")
             }
 
             else -> throw Exception("Unknown splitter type")
@@ -102,10 +107,10 @@ class SplitterCell(private val type: Char) : Cell {
 }
 
 fun allStartInstructions(grid: Grid<Any>): List<Instruction> {
-    return grid.indices.map { i -> Point(i, 0) pointing RIGHT } +
-            grid.indices.map { i -> Point(i, grid.size - 1) pointing LEFT } +
-            grid[0].indices.map { i -> Point(0, i) pointing DOWN } +
-            grid[0].indices.map { i -> Point(grid.size - 1, i) pointing UP }
+    return grid.indices.map { i -> Point(i, 0) pointing R } +
+            grid.indices.map { i -> Point(i, grid.size - 1) pointing L } +
+            grid[0].indices.map { i -> Point(0, i) pointing D } +
+            grid[0].indices.map { i -> Point(grid.size - 1, i) pointing U }
 }
 
 fun computeEnergy(grid: Grid<Cell>, start: Instruction): Int {
@@ -136,7 +141,11 @@ fun computeEnergy(grid: Grid<Cell>, start: Instruction): Int {
     return directionHistory.sumOf { row -> row.count { it.isNotEmpty() } }
 }
 
+fun <T> Grid<Set<T>>.toMutableGrid(): MutableGrid<MutableSet<T>> =
+    this.map { row -> row.map { it.toMutableSet() }.toMutableList() }.toMutableList()
+
 data class Instruction(val point: Point, val direction: Direction) {
     override fun toString(): String = "$point $direction"
 }
 
+infix fun Point.pointing(direction: Direction) = Instruction(this, direction)
