@@ -1,6 +1,6 @@
 package y2021
 
-import readInput
+import readLines
 import zip
 
 fun main() {
@@ -71,8 +71,8 @@ fun main() {
         return winningBoard.sumUnmarked() * winningDraw
     }
 
-    val testInput = readInput("y2021/Day04_test")
-    val input = readInput("y2021/Day04")
+    val testInput = readLines("y2021/Day04_test")
+    val input = readLines("y2021/Day04")
 
     println(part1(testInput))
     check(part1(testInput) == 4512)

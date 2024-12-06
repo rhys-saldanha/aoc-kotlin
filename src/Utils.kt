@@ -3,16 +3,25 @@ import java.nio.file.Paths
 import kotlin.io.path.Path
 import kotlin.io.path.exists
 import kotlin.io.path.readLines
+import kotlin.io.path.readText
 
 /**
  * Reads lines from the given input txt file.
  */
-fun readInput(name: String): List<String> {
+fun readLines(name: String): List<String> {
     val inputFile = Path("src", "$name.txt")
 
     check(inputFile.exists()) { "input file $name does not exist" }
 
     return inputFile.readLines()
+}
+
+fun readText(name: String): String {
+    val inputFile = Path("src", "$name.txt")
+
+    check(inputFile.exists()) { "input file $name does not exist" }
+
+    return inputFile.readText()
 }
 
 fun List<String>.split(regex: Regex = "\\s+".toRegex()): List<List<String>> =

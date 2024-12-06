@@ -1,6 +1,6 @@
 package y2022
 
-import readInput
+import readLines
 import toPair
 
 fun main() {
@@ -20,8 +20,8 @@ fun main() {
         }.sumOf { it.priority() }
     }
 
-    val testInput = readInput("y2022/Day03_test")
-    val input = readInput("y2022/Day03")
+    val testInput = readLines("y2022/Day03_test")
+    val input = readLines("y2022/Day03")
 
     println(part1(testInput))
     check(part1(testInput) == 157)

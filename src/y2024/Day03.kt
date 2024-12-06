@@ -1,6 +1,6 @@
 package y2024
 
-import readInput
+import readLines
 
 fun main() {
     val multiplyRegex = """mul\(([0-9]{1,3}),([0-9]{1,3})\)""".toRegex()
@@ -24,11 +24,11 @@ fun main() {
             }.second
     }
 
-    val testInput = readInput("y2024/Day03_test")
+    val testInput = readLines("y2024/Day03_test")
     check(part1(testInput) == 161)
     check(part2(testInput) == 48)
 
-    val input = readInput("y2024/Day03")
+    val input = readLines("y2024/Day03")
     println(part1(input))
     println(part2(input))
 }

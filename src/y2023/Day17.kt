@@ -2,7 +2,7 @@ package y2023
 
 import common.*
 import common.Direction.*
-import readInput
+import readLines
 import java.util.*
 
 fun main() {
@@ -54,13 +54,13 @@ fun main() {
 
     fun part2(input: List<String>): Int = findPath(input, 4, 10)
 
-    val testInput = readInput("y2023/Day17_test")
+    val testInput = readLines("y2023/Day17_test")
     println(part1(testInput))
     check(part1(testInput) == 102)
     println(part2(testInput))
     check(part2(testInput) == 94)
 
-    val input = readInput("y2023/Day17")
+    val input = readLines("y2023/Day17")
     println(part1(input))
     println(part2(input))
 }

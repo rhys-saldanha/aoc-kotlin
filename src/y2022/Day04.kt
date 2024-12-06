@@ -1,6 +1,6 @@
 package y2022
 
-import readInput
+import readLines
 
 fun main() {
 
@@ -14,11 +14,11 @@ fun main() {
             .count { it.first.overlaps(it.second) }
     }
 
-    val testInput = readInput("y2022/Day04_test")
+    val testInput = readLines("y2022/Day04_test")
     check(part1(testInput) == 2)
     check(part2(testInput) == 4)
 
-    val input = readInput("y2022/Day04")
+    val input = readLines("y2022/Day04")
     println(part1(input))
     println(part2(input))
 }

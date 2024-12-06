@@ -1,6 +1,6 @@
 package y2021
 
-import readInput
+import readLines
 
 fun main() {
     fun simulateDay(fishBucket: Map.Entry<Int, Long>): Pair<Int, Long> {
@@ -69,8 +69,8 @@ fun main() {
         return state.values.sumOf { it }
     }
 
-    val testInput = readInput("y2021/Day06_test")
-    val input = readInput("y2021/Day06")
+    val testInput = readLines("y2021/Day06_test")
+    val input = readLines("y2021/Day06")
 
     val part1Answer = part1(testInput, print = false)
     println(part1Answer)

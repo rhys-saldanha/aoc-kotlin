@@ -1,6 +1,6 @@
 package y2021
 
-import readInput
+import readLines
 
 fun main() {
     fun part1(input: List<String>): Int {
@@ -12,10 +12,10 @@ fun main() {
     }
 
     // test if implementation meets criteria from the description, like:
-    val testInput = readInput("y2021/Day01_test")
+    val testInput = readLines("y2021/Day01_test")
     check(part1(testInput) == 1)
 
-    val input = readInput("y2021/Day01")
+    val input = readLines("y2021/Day01")
     println(part1(input))
     println(part2(input))
 }

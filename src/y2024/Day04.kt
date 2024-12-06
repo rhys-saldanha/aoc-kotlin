@@ -2,7 +2,7 @@ package y2024
 
 import common.*
 import common.Direction.*
-import readInput
+import readLines
 import javax.sql.XAConnection
 
 fun main() {
@@ -41,11 +41,11 @@ fun main() {
         return possibleStarts.filter { start -> hasMAS(start, grid) }.count()
     }
 
-    val testInput = readInput("y2024/Day04_test")
+    val testInput = readLines("y2024/Day04_test")
     check(part1(testInput) == 18)
     check(part2(testInput) == 9)
 
-    val input = readInput("y2024/Day04")
+    val input = readLines("y2024/Day04")
     println(part1(input))
     println(part2(input))
 }

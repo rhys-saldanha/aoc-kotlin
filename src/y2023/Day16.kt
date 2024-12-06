@@ -2,7 +2,7 @@ package y2023
 
 import common.*
 import common.Direction.*
-import readInput
+import readLines
 import java.lang.IllegalStateException
 
 fun main() {
@@ -31,13 +31,13 @@ fun main() {
             .maxOf { start -> computeEnergy(grid, start) }
     }
 
-    val testInput = readInput("y2023/Day16_test")
+    val testInput = readLines("y2023/Day16_test")
     println(part1(testInput))
     check(part1(testInput) == 46)
     println(part2(testInput))
     check(part2(testInput) == 51)
 
-    val input = readInput("y2023/Day16")
+    val input = readLines("y2023/Day16")
     println(part1(input))
     println(part2(input))
 }

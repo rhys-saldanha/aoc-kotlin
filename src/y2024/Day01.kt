@@ -1,7 +1,7 @@
 package y2024
 
 import mapInner
-import readInput
+import readLines
 import split
 import toPair
 import kotlin.math.abs
@@ -28,11 +28,11 @@ fun main() {
         return left.sumOf { leftN -> leftN * right.count { it == leftN } }
     }
 
-    val testInput = readInput("y2024/Day01_test")
+    val testInput = readLines("y2024/Day01_test")
     check(part1(testInput) == 11)
     check(part2(testInput) == 31)
 
-    val input = readInput("y2024/Day01")
+    val input = readLines("y2024/Day01")
     println(part1(input))
     println(part2(input))
 }

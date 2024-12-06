@@ -1,6 +1,6 @@
 package y2021
 
-import readInput
+import readLines
 
 fun main() {
     fun part1(input: List<String>, print: Boolean = false): Int {
@@ -15,8 +15,8 @@ fun main() {
         return lines.sumOf { getOutputNumber(it) }
     }
 
-    val testInput = readInput("y2021/Day08_test")
-    val input = readInput("y2021/Day08")
+    val testInput = readLines("y2021/Day08_test")
+    val input = readLines("y2021/Day08")
 
     val part1Answer = part1(testInput)
     println(part1Answer)

@@ -1,6 +1,6 @@
 package y2021
 
-import readInput
+import readLines
 import java.util.function.Predicate
 
 fun main() {
@@ -29,8 +29,8 @@ fun main() {
         return largestBasins.map { it.size }.reduce { acc, i -> acc * i }
     }
 
-    val testInput = readInput("y2021/Day09_test")
-    val input = readInput("y2021/Day09")
+    val testInput = readLines("y2021/Day09_test")
+    val input = readLines("y2021/Day09")
 
     val part1Answer = part1(testInput)
     println(part1Answer)

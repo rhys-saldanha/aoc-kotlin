@@ -1,7 +1,7 @@
 package y2024
 
 import mapInner
-import readInput
+import readLines
 import split
 import y2024.SortDirection.ASCENDING
 import y2024.SortDirection.DESCENDING
@@ -24,11 +24,11 @@ fun main() {
         return reports.count { report -> isSafeDampened(report) }
     }
 
-    val testInput = readInput("y2024/Day02_test")
+    val testInput = readLines("y2024/Day02_test")
     check(part1(testInput) == 2)
     check(part2(testInput) == 4)
 
-    val input = readInput("y2024/Day02")
+    val input = readLines("y2024/Day02")
     println(part1(input))
     println(part2(input))
 }

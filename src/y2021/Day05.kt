@@ -1,6 +1,6 @@
 package y2021
 
-import readInput
+import readLines
 import kotlin.math.abs
 import kotlin.math.max
 
@@ -73,8 +73,8 @@ fun main() {
         return ventMap.getPoints()
     }
 
-    val testInput = readInput("y2021/Day05_test")
-    val input = readInput("y2021/Day05")
+    val testInput = readLines("y2021/Day05_test")
+    val input = readLines("y2021/Day05")
 
     val part1Answer = part1(testInput, print = false)
     println(part1Answer)

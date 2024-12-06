@@ -1,6 +1,6 @@
 package y2021
 
-import readInput
+import readLines
 import kotlin.math.abs
 import kotlin.math.ceil
 import kotlin.math.floor
@@ -35,8 +35,8 @@ fun main() {
         )
     }
 
-    val testInput = readInput("y2021/Day07_test")
-    val input = readInput("y2021/Day07")
+    val testInput = readLines("y2021/Day07_test")
+    val input = readLines("y2021/Day07")
 
     val part1Answer = part1(testInput, print = true)
     println(part1Answer)
