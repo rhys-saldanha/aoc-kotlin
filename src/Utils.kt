@@ -1,5 +1,3 @@
-import java.nio.file.Files
-import java.nio.file.Paths
 import kotlin.io.path.Path
 import kotlin.io.path.exists
 import kotlin.io.path.readLines
@@ -23,6 +21,8 @@ fun readText(name: String): String {
 
     return inputFile.readText()
 }
+
+fun String.splitChunks(): List<String> = this.split("\n\n")
 
 fun List<String>.split(regex: Regex = "\\s+".toRegex()): List<List<String>> =
     this.map { line -> line.trim().split(regex) }
