@@ -141,9 +141,6 @@ fun computeEnergy(grid: Grid<Cell>, start: Instruction): Int {
     return directionHistory.sumOf { row -> row.count { it.isNotEmpty() } }
 }
 
-fun <T> Grid<Set<T>>.toMutableGrid(): MutableGrid<MutableSet<T>> =
-    this.map { row -> row.map { it.toMutableSet() }.toMutableList() }.toMutableList()
-
 data class Instruction(val point: Point, val direction: Direction) {
     override fun toString(): String = "$point $direction"
 }

@@ -1,7 +1,6 @@
 package common
 
 typealias Grid<T> = List<List<T>>
-typealias MutableGrid<T> = MutableList<MutableList<T>>
 
 enum class Direction {
     U, UR, R, DR, D, DL, L, UL
@@ -51,7 +50,12 @@ fun <T> Grid<T>.values(): Sequence<Pair<Point, T>> = sequence {
         }
     }
 }
+typealias MutableGrid<T> = MutableList<MutableList<T>>
 
-fun <T> MutableGrid<T>.set(point: Point, value: T) {
+fun <T> Grid<T>.toMutableGrid(): MutableGrid<T> =
+    this.map { row -> row.toMutableList() }.toMutableList()
+
+fun <T> MutableGrid<T>.set(point: Point, value: T): MutableGrid<T> {
     this[point.x][point.y] = value
+    return this;
 }
