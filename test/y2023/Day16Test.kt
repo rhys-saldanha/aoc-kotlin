@@ -1,13 +1,16 @@
 package y2023
 
 import common.Direction
+import common.Direction.D
+import common.Direction.L
+import common.Direction.R
+import common.Direction.U
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.contains
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.EnumSource
-import common.Direction.*
 
 class Day16Test {
 

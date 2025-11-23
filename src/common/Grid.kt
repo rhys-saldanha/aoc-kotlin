@@ -27,35 +27,22 @@ data class Point(val x: Int, val y: Int) {
     override fun toString(): String = "($x, $y)"
 }
 
-fun <T> Grid<T>.get(point: Point): T {
-    return this[point.x][point.y]
-}
+fun <T> Grid<T>.get(point: Point) = this[point.x][point.y]
 
-fun <T> Grid<T>.has(point: Point): Boolean {
-    return this.getOrNull(point) != null
-}
+fun <T> Grid<T>.has(point: Point) = this.getOrNull(point) != null
 
-fun <T> Grid<T>.getOrNull(point: Point): T? {
-    return this.getOrNull(point.x)?.getOrNull(point.y)
-}
+fun <T> Grid<T>.getOrNull(point: Point): T? = this.getOrNull(point.x)?.getOrNull(point.y)
 
-fun <T, U> Grid<T>.mapValues(transform: (T) -> U): Grid<U> {
-    return this.map { row -> row.map { transform(it) } }
-}
+fun <T, U> Grid<T>.mapValues(transform: (T) -> U): Grid<U> = this.map { row -> row.map { transform(it) } }
 
-fun <T> Grid<T>.values(): Sequence<Pair<Point, T>> = sequence {
-    for (x in this@values.indices) {
-        for (y in this@values[x].indices) {
-            yield(Point(x, y) to this@values[x][y])
+val <T> Grid<T>.values: Sequence<Pair<Point, T>>
+    get() = sequence {
+        for (x in this@values.indices) {
+            for (y in this@values[x].indices) {
+                yield(Point(x, y) to this@values[x][y])
+            }
         }
     }
-}
-typealias MutableGrid<T> = MutableList<MutableList<T>>
 
-fun <T> Grid<T>.toMutableGrid(): MutableGrid<T> =
-    this.map { row -> row.toMutableList() }.toMutableList()
-
-fun <T> MutableGrid<T>.set(point: Point, value: T): MutableGrid<T> {
-    this[point.x][point.y] = value
-    return this;
-}
+operator fun <T> Grid<T>.set(point: Point, value: T): Grid<T> =
+    this.toMutableList().apply { this[point.x].toMutableList().apply { this[point.y] = value } }

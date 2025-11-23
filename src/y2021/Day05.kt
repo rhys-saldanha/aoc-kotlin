@@ -129,15 +129,10 @@ private class VentMap(size: Int) {
     }
 
     fun addDiagonalLine(start: Coordinate, end: Coordinate, print: Boolean = false) {
-        val xs = (start.x toward end.x).toList()
-        val ys = (start.y toward end.y).toList()
-
-        for (i in xs.indices) {
-            val x = xs[i]
-            val y = ys[i]
-            val row = map[y]
-            row[x] = row[x] + 1
+        for (p in (start.x toward end.x).zip((start.y toward end.y))) {
+            map[p.first][p.second] += 1
         }
+
         if (print) {
             println(start)
             println(end)

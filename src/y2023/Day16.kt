@@ -1,9 +1,16 @@
 package y2023
 
-import common.*
-import common.Direction.*
+import common.Direction
+import common.Direction.D
+import common.Direction.L
+import common.Direction.R
+import common.Direction.U
+import common.Grid
+import common.Point
+import common.get
+import common.has
+import common.mapValues
 import readLines
-import java.lang.IllegalStateException
 
 fun main() {
 
@@ -117,7 +124,6 @@ fun computeEnergy(grid: Grid<Cell>, start: Instruction): Int {
 
     val directionHistory = grid
         .mapValues { mutableSetOf<Direction>() }
-        .toMutableGrid()
 
     val queue = mutableListOf(start)
 

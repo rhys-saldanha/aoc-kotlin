@@ -1,9 +1,15 @@
 package y2024
 
-import common.*
-import common.Direction.*
+import common.Direction
+import common.Direction.DL
+import common.Direction.DR
+import common.Direction.UL
+import common.Direction.UR
+import common.Grid
+import common.Point
+import common.getOrNull
+import common.values
 import readLines
-import javax.sql.XAConnection
 
 fun main() {
 
@@ -19,7 +25,7 @@ fun main() {
 
     fun part1(input: List<String>): Int {
         val grid: Grid<Char> = input.map { it.toCharArray().asList() }
-        val possibleStarts = grid.values()
+        val possibleStarts = grid.values
             .filter { (_, value) -> value == 'X' }
             .map { (point, _) -> point }
 
@@ -34,7 +40,7 @@ fun main() {
 
     fun part2(input: List<String>): Int {
         val grid: Grid<Char> = input.map { it.toCharArray().asList() }
-        val possibleStarts = grid.values()
+        val possibleStarts = grid.values
             .filter { (_, value) -> value == 'A' }
             .map { (point, _) -> point }
 
